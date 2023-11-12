@@ -63,10 +63,52 @@ $superheroes = [
   ], 
 ];
 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	include 'index.html';
+	$inp = $_POST['Hero_Search'];
+	$inp = $inp.trim(" ");
+	$name = filter_var($inp, FILTER_SANITIZE_STRING);
+	
+	if (empty($name)) {
+		echo "Enter name";
+	} else {
+		foreach ($superheroes as $superhero){
+			if($superhero['alias'] == $name || $superhero['name'] == $name){
+				$sname = $superhero['name'];
+				$salias = $superhero['alias'];
+				$sbio = $superhero['biography'];
+				
+			}
+		}
+	}
+}
+
+
 ?>
+
+
 
 <ul>
 <?php foreach ($superheroes as $superhero): ?>
   <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
 </ul>
+
+<?= "@#$%^&"?>
+
+<?php foreach ($superheroes as $superhero): ?>
+<?= $superhero['name']; ?>
+<?= "||//"?>
+<?= $superhero['alias']; ?>
+<?= "||//"?>
+<?= $superhero['biography']; ?>
+<?= "_:::_"?>
+<?php endforeach; ?>
+
+
+
+<?php
+//$result = $_GET['data'];
+//print res;
+?>
